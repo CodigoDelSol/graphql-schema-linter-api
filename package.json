@@ -1,8 +1,11 @@
 {
-  "name": "schematest",
-  "version": "1.0.0",
-  "description": "",
+  "name": "graphql-schema-linter-api",
+  "version": "0.1.0",
+  "description": "Programmatically lint your GraphQL schema",
   "main": "index.js",
+  "repository": {
+    "url": "https://github.com/CodigoDelSol/graphql-schema-linter-api"
+  },
   "scripts": {
     "start": "node index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
