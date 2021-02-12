@@ -1,10 +1,9 @@
 const { validateSchemaDefinition } = require('graphql-schema-linter/lib/validator')
 const { loadSchemaFromStdin } = require('./schemaFromPromise')
 const { Configuration } = require('graphql-schema-linter/lib/configuration')
-const strSchema = require('./schema')
 const { groupErrorsBySchemaFilePath } = require('./errorFormatting')
 
-const gogo = async () => {
+const gogo = async (strSchema) => {
     const schema = await loadSchemaFromStdin(strSchema)
     const configuration = new Configuration(schema, {});
     // wat?
@@ -14,6 +13,9 @@ const gogo = async () => {
     const errors = validateSchemaDefinition(schema, rules, configuration);
     const groupedErrors = groupErrorsBySchemaFilePath(errors, schema.sourceMap);
     const formatted = formatter(groupedErrors)
-    console.log(formatted)
+    return formatted
 }
-gogo()
+
+module.exports = {
+    validateSchemaDefinition: gogo
+}
