@@ -14,7 +14,7 @@ const gogo = async (strSchema) => {
     const errors = validateSchemaDefinition(schema, rules, configuration);
     const groupedErrors = groupErrorsBySchemaFilePath(errors, schema.sourceMap);
     const formatted = formatter(groupedErrors)
-    return formatted
+    return groupedErrors
 }
 
 module.exports = {
